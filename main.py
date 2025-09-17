@@ -7,11 +7,18 @@ import ru_local as ru
 
 def count_syllables(word, language):
     """Counting syllables for words"""
-    syllables = 0
-    vowels = 'aeiouyAEIOUYаеёиоуыэюяАЕЁИОУЫЭЮЯ'
-    for i in range(len(text)):
-        if text[i] in vowels:
-            syllables += 1
+    word = str(word).lower()
+    vowels_en = 'aeiouy'
+    vowels_ru = 'аеёиоуыэюя'
+
+    count = 0
+    vowels = vowels_ru if language == 'ru' else vowels_en
+
+    for char in word:
+        if char in vowels:
+            count += 1
+
+    return max(count, 1)
 
 
 def detect_language(text):
